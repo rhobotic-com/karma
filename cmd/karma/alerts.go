@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"sort"
+	"strings"
 
 	"github.com/fvbommel/sortorder"
 	"github.com/rs/zerolog/log"
@@ -15,6 +16,11 @@ import (
 	"github.com/prymitive/karma/internal/slices"
 	"github.com/prymitive/karma/internal/uri"
 )
+
+// caseInsensitiveNaturalLess compares two strings case-insensitively using natural order
+func caseInsensitiveNaturalLess(str1, str2 string) bool {
+	return sortorder.NaturalLess(strings.ToLower(str1), strings.ToLower(str2))
+}
 
 func getFiltersFromQuery(filterStrings []string) []filters.FilterT {
 	matchFilters := []filters.FilterT{}
@@ -211,9 +217,9 @@ func sortAlertGroups(r models.AlertsRequest, groups []models.APIAlertGroup) []mo
 			}
 			// finnally return groups sorted by label
 			if sortReverse {
-				return !sortorder.NaturalLess(vi, vj)
+				return !caseInsensitiveNaturalLess(vi, vj)
 			}
-			return sortorder.NaturalLess(vi, vj)
+			return caseInsensitiveNaturalLess(vi, vj)
 		})
 	default:
 		// sort alert groups so they are always returned in the same order
@@ -251,9 +257,9 @@ func sortGrids(r models.AlertsRequest, gridLabel string, gridsMap map[string]mod
 		}
 		// finnally return groups sorted by label
 		if gridSortReverse {
-			return !sortorder.NaturalLess(vi, vj)
+			return !caseInsensitiveNaturalLess(vi, vj)
 		}
-		return sortorder.NaturalLess(vi, vj)
+		return caseInsensitiveNaturalLess(vi, vj)
 	})
 
 	return grids
