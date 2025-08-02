@@ -28,7 +28,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7.0.6
         with:
           token: ${{ secrets.GH_REPO_TOKEN }}
-          author: "Łukasz Mierzwa <l.mierzwa@gmail.com>"
+          author: "ctrlzhero <darren@rhobotic.com>"
           commit-message: "chore(actions): use latest Go version"
           branch: version-sync-go
           delete-branch: true
