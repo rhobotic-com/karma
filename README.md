@@ -281,7 +281,9 @@ To start docker image build from lastet main branch run:
 
     docker run -e ALERTMANAGER_URI=https://alertmanager.example.com ghcr.io/prymitive/karma:latest
 
-To start docker image build locally (a local build) from latest main branch using docker compose run:
+To start docker image build locally (a local build) from latest main branch
+using docker compose run:
+
     docker compose up -d
 
 Note that latest main branch might have bugs or breaking changes. Using
