@@ -286,6 +286,8 @@ using docker compose run:
 
     docker compose up -d
 
+    docker compose down
+
 Note that latest main branch might have bugs or breaking changes. Using
 release images is strongly recommended for any production use.
 

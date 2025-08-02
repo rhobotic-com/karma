@@ -4,4 +4,8 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - ALERTMANAGER_URI=https://alertmanager.example.com
+      - ALERTMANAGER_URI=http://alertmanager:9093
+  alertmanager:
+    image: quay.io/prometheus/alertmanager:v0.28.1
+    ports:
+      - "9093:9093"
