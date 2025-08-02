@@ -472,18 +472,18 @@ jobs:
         if: github.event_name == 'release'
         run: |
           echo 'DOCKER_TAGS<<EOF' >> $GITHUB_ENV
-          echo 'ctrlzhero/karma:${{ github.ref_name }}' >> $GITHUB_ENV
-          echo 'ctrlzhero/karma:latest' >> $GITHUB_ENV
-          # echo 'ghcr.io/prymitive/karma:${{ github.ref_name }}' >> $GITHUB_ENV
-          # echo 'ghcr.io/prymitive/karma:latest' >> $GITHUB_ENV
+          echo 'ctrlzhero/karma-local-changes:${{ github.ref_name }}' >> $GITHUB_ENV
+          echo 'ctrlzhero/karma-local-changes:latest' >> $GITHUB_ENV
+          # echo 'ghcr.io/prymitive/karma-local-changes:${{ github.ref_name }}' >> $GITHUB_ENV
+          # echo 'ghcr.io/prymitive/karma-local-changes:latest' >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
       - name: "Setup docker tags (latest)"
         if: github.event_name != 'release'
         run: |
           echo 'DOCKER_TAGS<<EOF' >> $GITHUB_ENV
-          echo 'ctrlzhero/karma:latest' >> $GITHUB_ENV
-          # echo 'ghcr.io/prymitive/karma:latest' >> $GITHUB_ENV
+          echo 'ctrlzhero/karma-local-changes:latest' >> $GITHUB_ENV
+          # echo 'ghcr.io/prymitive/karma-local-changes:latest' >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
       - name: "Setup docker plaforms (merge/release)"
