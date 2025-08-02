@@ -1,0 +1,11 @@
+services:
+  karma:
+    image: karma:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - ALERTMANAGER_URI=http://alertmanager:9093
+  alertmanager:
+    image: quay.io/prometheus/alertmanager:v0.28.1
+    ports:
+      - "9093:9093"
